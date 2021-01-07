@@ -1,6 +1,16 @@
+import { Component, Input } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+
+@Component({ selector: 'app-line-chart', template: '', styles: [] })
+class MockProductImageUploadComponent {
+  @Input() inputData: any[];
+  @Input() width: number;
+  @Input() height: number;
+  @Input() exponent: number = 1;
+  @Input() drawCirclePoints: boolean = true;
+}
 
 describe('AppComponent', () => {
   beforeEach(async () => {
@@ -9,7 +19,7 @@ describe('AppComponent', () => {
         RouterTestingModule
       ],
       declarations: [
-        AppComponent
+        AppComponent, MockProductImageUploadComponent
       ],
     }).compileComponents();
   });
@@ -20,16 +30,5 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'Angular-D3'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('Angular-D3');
-  });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('Angular-D3 app is running!');
-  });
 });

@@ -1,0 +1,15 @@
+::ng-deep .chart {
+
+  svg {
+    border: 1px solid gray;
+  }
+
+  .grid line {
+    stroke: lightgray;
+    stroke-opacity: 0.7;
+    shape-rendering: crispEdges;
+  }
+
+}
+
+
