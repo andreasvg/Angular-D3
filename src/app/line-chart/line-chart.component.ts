@@ -17,6 +17,7 @@ export class LineChartComponent implements OnChanges {
   @Input() drawCirclePoints: boolean = true;
   @Input() drawLegend: boolean = true;
   @Input() enableZoom: boolean = false;
+  @Input() enableSmoothing: boolean = true;
 
   private data: any[];
   private margin: number = 50;
@@ -168,8 +169,11 @@ export class LineChartComponent implements OnChanges {
     let line1 = d3.line()
         .x(d => xScaleFunc(d.date))
         .y(d => yScaleFunc(d[propertyName]))
-        .curve(d3.curveMonotoneX)
         ;
+
+    if (this.enableSmoothing) {
+      line1.curve(d3.curveMonotoneX)
+    }
 
     dataGroup.append("path")
         .data([this.data])
