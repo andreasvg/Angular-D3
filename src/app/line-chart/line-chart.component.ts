@@ -1,4 +1,5 @@
 import * as d3 from 'd3';
+import * as d3Zoom from 'd3-zoom';
 import {cloneDeep} from 'lodash';
 import { Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewEncapsulation } from '@angular/core';
 
@@ -15,6 +16,7 @@ export class LineChartComponent implements OnChanges {
   @Input() exponent: number = 1;
   @Input() drawCirclePoints: boolean = true;
   @Input() drawLegend: boolean = true;
+  @Input() enableZoom: boolean = false;
 
   private data: any[];
   private margin: number = 50;
@@ -31,7 +33,12 @@ export class LineChartComponent implements OnChanges {
   }
 
   private renderChart(): void {
-      let mainDataGroup = this.buildMainDataGroup();
+      let svg = d3.select(this.container.nativeElement).select('.chart').append('svg');
+      let mainDataGroup = this.buildMainDataGroup(svg);
+
+      if (this.enableZoom) {
+        this.configureZoom(svg, mainDataGroup);
+      }
 
       // set up the X and Y scales:
       let x = this.buildXScaleFunc();
@@ -63,12 +70,26 @@ export class LineChartComponent implements OnChanges {
       this.rotateLabels();
   }
 
+  private configureZoom(svg, outerGroup): void {
+
+    var onZoom = d3.zoom()
+        .on("zoom", zoomFunction);
+
+    onZoom(svg);
+
+    function zoomFunction(event) {
+      outerGroup.attr("transform", event.transform);
+    }
+
+  }
+
   private clearExistingSvg(): void {
     d3.select(this.container.nativeElement).select('.chart').select('svg').remove();
   }
 
-  private buildMainDataGroup() {
-    let dataGroup = d3.select(this.container.nativeElement).select('.chart').append('svg')
+  private buildMainDataGroup(svg) {
+    //let dataGroup = d3.select(this.container.nativeElement).select('.chart').append('svg')
+    let dataGroup = svg
     .attr("width", this.width + this.margin)
     .attr("height", this.height + 2 * this.margin)
     .append("g")
