@@ -73,7 +73,9 @@ export class LineChartComponent implements OnChanges {
   private configureZoom(svg, outerGroup): void {
 
     var onZoom = d3.zoom()
-        .on("zoom", zoomFunction);
+        .on("zoom", zoomFunction)
+        //.scaleExtent([1, 5])
+        ;
 
     onZoom(svg);
 
