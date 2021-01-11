@@ -2,6 +2,10 @@ import * as d3 from 'd3';
 import { Component, ElementRef, Input, OnInit } from '@angular/core';
 import { PieChartDataPoint } from '../models/pie-chart-data-point';
 
+/*
+See https://www.d3-graph-gallery.com/graph/donut_label.html
+*/
+
 @Component({
   selector: 'app-pie-chart2',
   templateUrl: './pie-chart2.component.html',
