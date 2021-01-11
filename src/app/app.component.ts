@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { PieChartDataPoint } from './models/pie-chart-data-point';
 
 @Component({
   selector: 'app-root',
@@ -54,4 +55,21 @@ export class AppComponent {
     { date: "11/14/2018", value1: 59, schnabel: 60 },
     { date: "11/15/2018", value1: 61, schnabel: 58 },
     { date: "11/16/2018", value1: 62, schnabel: 60 }];
+
+    public pieData: PieChartDataPoint[] = [
+      { value: 40, label: 'Gibson ES-335' },
+      { value: 38, label: 'Fender Telecaster' },
+      { value: 30, label: 'Fender Stratocaster'},
+      { value: 20, label: 'Gibson Les Paul'},
+      { value: 11, label: 'Paul Reed Smith Custom 24'}
+    ];
+
+    public pieData2: PieChartDataPoint[] = [
+      { value: 40, label: 'Les Paul Tribute' },
+      { value: 10, label: 'ES-339' },
+      { value: 60, label: 'Les Paul Classic'},
+      { value: 35, label: 'ES-335'},
+      { value: 20, label: 'SG'},
+      { value: 65, label: 'Les Paul Standard'}
+    ];
 }

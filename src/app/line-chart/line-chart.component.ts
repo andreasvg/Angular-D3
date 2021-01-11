@@ -1,7 +1,6 @@
 import * as d3 from 'd3';
-import * as d3Zoom from 'd3-zoom';
 import {cloneDeep} from 'lodash';
-import { Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewEncapsulation } from '@angular/core';
+import { Component, ElementRef, Input, OnChanges, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-line-chart',

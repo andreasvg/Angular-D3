@@ -1,6 +1,9 @@
 <app-line-chart [inputData]="data" [width]="1024" [height]="768" [drawLegend]="false" [enableZoom]="true"></app-line-chart>
 
-
 <app-line-chart [inputData]="data2" [width]="1024" [height]="768" [exponent]="0.3" [drawCirclePoints]="false" [enableSmoothing]="false"></app-line-chart>
 
+<app-pie-chart [height]="400" [width]="400" [innerRadiusRatio]="0"></app-pie-chart>
 
+<app-pie-chart2 [data]="pieData" chartTitle="Desert Island Guitar"></app-pie-chart2>
+
+<app-pie-chart2 [data]="pieData2" chartTitle="Gibson Popularity" [showImage]="true"></app-pie-chart2>
